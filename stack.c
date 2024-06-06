@@ -1,32 +1,47 @@
 #include <stdio.h>
+#include <stdlib.h>
+#define MAX 10
 
-int stack[10];
-int top = 0;
-
-void insert(int x)
+typedef struct
 {
-	stack[top] = x;
-	top++;
-}
-int delete()
+	int array[MAX];
+	int top;
+} Stack;
+
+void push(int value,Stack *stack)
 {
-	top--;
-	stack[top];
+	if(stack->top < MAX)
+	{
+		stack->array[stack->top] = value;
+		stack->top++;
+
+	}else
+	{
+		printf("NO space");
+	}
 }
+void pop(Stack *stack)
+{
+	if(stack->top > 0)
+	{
+		stack->top--;
+	}
+	else
+	{
+		printf("empty");
+	}
 
-
+}
 int main()
 {
-	int n , m;
+	Stack p;
+	p.top = 0;
 
+	push(1,&p);
+	push(2,&p);
+	push(3,&p);
+	push(5,&p);
 
-	insert(9);
-	insert(3);
-	insert(2);
-	n = delete();
-	m = delete();
-
-	printf("n=%d\n",n);
-	printf("m=%d\n",m);
+printf("Top: %d\n",p.top);
 	return (0);
 }
