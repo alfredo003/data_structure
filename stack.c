@@ -41,7 +41,6 @@ int main()
 	push(2,&p);
 	push(3,&p);
 	push(5,&p);
-
-printf("Top: %d\n",p.top);
+	printf("Top: %d\n",p.top);
 	return (0);
 }
