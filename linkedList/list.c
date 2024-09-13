@@ -1,31 +1,75 @@
 #include "list.h"
 
-t_list *insertion(void *data)
+t_list *created_node(void *content)
 {
 	t_list *node = (t_list *)malloc(sizeof(t_list));
 	
 	if(!node)
-		return NULL;
-	node->data = data;
-	node->next =NULL;
+	{
+		printf("Memory allocation faild!");
+		exit(1);
+	}
+	
+	node->data = content;
+	node->next = NULL;
+	
 	return (node);
 }
 
-void display(t_list *head)
+void insert_begin(t_list **head,void *content)
 {
-	t_list *tmp =head;
-	while(tmp)
-	{
-		printf(" %s ",(char *)tmp->data);
-		tmp = head->next;
-	}
+	t_list *node = created_node(content);
+	node->next = *head;
+	*head = node;
+	
 }
 
-
-int main(void)
+void insert_end(t_list **head,void *content)
 {
-	t_list *data = insertion("fff"); 
+	t_list *node = created_node(content);
+	if(*head == NULL)
+	{
+		*head = node;
+		return;
+	}
+	t_list *tmp = *head;
+	while(tmp->next != NULL)
+	{
+	 	tmp = tmp->next;
+	}
+	tmp->next = node;
+}
+void delete_list(t_list **head,void *key)
+{
+	t_list *tmp = *head;
+	t_list *prev = NULL;
 	
-	display(data);
-	return (0);
+	if(tmp != NULL && tmp->data == key)
+	{
+		*head = tmp->next;
+		free(tmp);
+		return;
+	}
+	while(tmp != NULL && tmp->data != key)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+	}
+	
+	if(tmp == NULL) return;
+	
+	prev->next = tmp->next;
+	
+	free(tmp);
+}
+void print_list(t_list *head)
+{
+	t_list *tmp = head;
+	printf("[");
+	while(tmp != NULL)
+	{
+		printf(" %s ",(char *)tmp->data);
+		tmp = tmp->next;
+	}	
+	printf("]");
 }
