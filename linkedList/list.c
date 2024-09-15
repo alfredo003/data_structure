@@ -62,6 +62,20 @@ void delete_list(t_list **head,void *key)
 	
 	free(tmp);
 }
+
+bool search_list(t_list **head,void *target)
+{
+	t_list *node = *head;
+	
+	while(node != NULL)
+	{
+		if(node->data == target)
+			return true;
+		node = node->next;
+	}
+	return false;
+}
+
 void print_list(t_list *head)
 {
 	t_list *tmp = head;

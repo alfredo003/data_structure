@@ -12,5 +12,10 @@ int main(int argc,char **argv)
 	delete_list(&head,"Brasil 4");
 	delete_list(&head,"Brasil 1");
 	print_list(head);
+	
+	if(search_list(&head,"Brasil 0"))
+		printf("\nFinded!");
+	else
+		printf("\nNo Finded!");
 	return (0);
 }

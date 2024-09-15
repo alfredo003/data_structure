@@ -2,6 +2,7 @@
 #define LIST_H
 #include<stdlib.h>
 #include<stdio.h>
+#include <stdbool.h>
 
 typedef struct s_list{
 	void *data;
@@ -13,4 +14,5 @@ void print_list(t_list *head);
 void insert_begin(t_list **head,void *content);
 void insert_end(t_list **head,void *content);
 void delete_list(t_list **head,void *key);
+bool search_list(t_list **head,void *target);
 #endif
