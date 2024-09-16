@@ -15,4 +15,6 @@ void insert_begin(t_list **head,void *content);
 void insert_end(t_list **head,void *content);
 void delete_list(t_list **head,void *key);
 bool search_list(t_list **head,void *target);
+t_list *reverse_list(t_list **head);
+
 #endif

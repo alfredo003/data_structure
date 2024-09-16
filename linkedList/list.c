@@ -76,6 +76,21 @@ bool search_list(t_list **head,void *target)
 	return false;
 }
 
+t_list *reverse_list(t_list **head)
+{ 
+	t_list *tmp = *head;
+	t_list *prev = NULL;
+	
+	while(tmp != NULL)
+	{
+		t_list *next = tmp->next;
+		tmp->next= prev;
+		prev= tmp;
+		tmp=next;
+	}
+	return (prev);
+}
+
 void print_list(t_list *head)
 {
 	t_list *tmp = head;
